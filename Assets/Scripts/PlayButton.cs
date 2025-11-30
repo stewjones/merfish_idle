@@ -1,31 +1,36 @@
 using UnityEngine;
-using UnityEngine.InputSystem;
+using UnityEngine.EventSystems;
+using UnityEngine.SceneManagement;
 
-public class PlayButton : MonoBehaviour
+public class PlayButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IPointerClickHandler
 {
     // Start is called once before the first execution of Update after the MonoBehaviour is created
 
-    private BoxCollider2D collider;
     [SerializeField]private SpriteRenderer text;
 
-    private void Awake()
-    {
-        collider = GetComponent<BoxCollider2D>();
-    }
-    void Start()
-    {
-        
-    }
-
-    public void OnMouseHoverPerformed(InputAction.CallbackContext context)
+    //Mouseover effects
+    public void OnPointerEnter(PointerEventData eventData)
     {
         text.color = Color.grey;
+        Debug.Log("Hovered over!");
     }
 
-
-    // Update is called once per frame
-    void Update()
+    public void OnPointerExit(PointerEventData eventData)
     {
-        
+        text.color = Color.white;
+        Debug.Log("Stopped hovering.");
+    }
+
+    //Load game on click
+    public void OnPointerClick(PointerEventData eventData)
+    {
+        Debug.Log("Play button clicked!");
+        SceneManager.LoadScene("Pond");
+       
+    }
+
+    void Awake()
+    {
+        Debug.Log("Awesome started");
     }
 }
