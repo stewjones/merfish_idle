@@ -29,11 +29,20 @@ public class PlayerMovement : MonoBehaviour
         {
             input = Vector2.zero;
         }
+
+        if (input.y > 0) Debug.Log("W pressed (moving up)");
+        if (input.y < 0) Debug.Log("S pressed (moving down)");
+        if (input.x < 0) Debug.Log("A pressed (moving left)");
+        if (input.x > 0) Debug.Log("D pressed (moving right)");
+
+
+
     }
 
     // Update is called once per frame
     void FixedUpdate()
     {
         rb.MovePosition(rb.position + input * moveSpeed * Time.fixedDeltaTime);
+
     }
 }

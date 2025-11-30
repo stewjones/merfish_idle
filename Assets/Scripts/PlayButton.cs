@@ -29,8 +29,4 @@ public class PlayButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHandl
        
     }
 
-    void Awake()
-    {
-        Debug.Log("Awesome started");
-    }
 }
